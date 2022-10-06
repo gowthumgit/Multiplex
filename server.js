@@ -24,6 +24,11 @@ app.use(bodyParser.json())
 const AdminRoute = require('./app/routes/AdminRoutes')
 app.use('/admin',AdminRoute)
 
+
+const TheatreRoute = require('./app/routes/theatreRoutes')
+app.use('/theatre',TheatreRoute)
+
+
 app.listen(7070,function(){
     console.log("Server is listening to Port no 7070");
 });

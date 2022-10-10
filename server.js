@@ -28,6 +28,8 @@ app.use('/admin',AdminRoute)
 const TheatreRoute = require('./app/routes/theatreRoutes')
 app.use('/theatre',TheatreRoute)
 
+const UserRoute = require('./app/routes/userRoutes')
+app.use('/user',UserRoute)
 
 app.listen(7070,function(){
     console.log("Server is listening to Port no 7070");

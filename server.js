@@ -24,9 +24,14 @@ app.use(bodyParser.json())
 const AdminRoute = require('./app/routes/AdminRoutes')
 app.use('/admin',AdminRoute)
 
+const audiRoute = require('./app/routes/audiRoutes')
+app.use('/audi',audiRoute)
 
 const TheatreRoute = require('./app/routes/theatreRoutes')
 app.use('/theatre',TheatreRoute)
+
+const MovieRoute = require('./app/routes/MovieRoutes')
+app.use('/movie',MovieRoute)
 
 const UserRoute = require('./app/routes/userRoutes')
 app.use('/user',UserRoute)

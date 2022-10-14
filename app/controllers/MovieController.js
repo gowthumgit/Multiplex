@@ -88,7 +88,7 @@ exports.update = async(req,res) =>{
 */
 
 
-const MovieModel = require('../model/movie');
+const MovieModel = require('../model/movieModel');
 
 //create and save a new user
 

@@ -1,12 +1,12 @@
 const express = require('express')
-const UserController = require('../controllers/Movie')
+const MovieController = require('../controllers/MovieController')
 const router =  express.Router();
 
-router.get('/',UserController.findAll);
-router.post('/',UserController.create);
-router.get('/:id',UserController.findOne);
-router.delete('/:id',UserController.destroy);
-router.put('/:id',UserController.update);
-router.patch( '/:id' , UserController.update);
+router.get('/',MovieController.findAll);
+router.post('/',MovieController.create);
+router.get('/:id',MovieController.findOne);
+router.delete('/:id',MovieController.destroy);
+router.put('/:id',MovieController.update);
+router.patch( '/:id' , MovieController.update);
 
 module.exports = router

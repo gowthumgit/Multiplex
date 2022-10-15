@@ -1,30 +1,27 @@
 var mongoose = require('mongoose');
 
 var schema=new mongoose.Schema({
-    theatreId:{
+    audiId:{
         type:String,
         required:true,
         unique:true
     },
-    theatreName:{
-        type:String,
-        required:true,
-    },
-    theatreCapacity:{
+    
+    rows:{
         type:Number,
         required:true,
     } ,
-    theatreType :{
-        type:String,
+    coloumns :{
+        type:Number,
         required:true,
     },
-    audis :
+    price :
     {
-        type:Array,
+        type:Number,
         required:true,
     }
 });
 
-var theatre = new mongoose.model('theatre',schema);
+var seat = new mongoose.model('seat',schema);
 
-module.exports = theatre
+module.exports = seat

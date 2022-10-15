@@ -13,6 +13,10 @@ var schema=new mongoose.Schema({
     userLanguage :{
         type:String,
         required:true,
+    },
+    userBalance :{
+        type:Number,
+        required:true, 
     }
   
 });

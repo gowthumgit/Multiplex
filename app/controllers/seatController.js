@@ -1,36 +1,40 @@
-const UserModel = require('../model/userModel');
+const SeatModel = require('../model/seatModel');
 
 //create and save a new user
 
 exports.create = async (req,res) => {
-    if(!req.body.userId && !req.body.userLocation && !req.body.userBalance){
+   /*  if(!req.body.audiId){
         res.status(400).send({message:"Content cannot be empty!!!"});
     }
+    */ if(!req.body.audiId && !req.body.rows && !req.body.coloumns && !req.body.price){
+        res.status(400).send({message:"Content ALL cannot be empty!!!"});
+    }
 
-    const  user= new UserModel({
-        userId:req.body.userId,
-        userLocation :req.body.userLocation,
-        userLanguage :req.body.userLanguage,
-        userBalance :req.body.userBalance,
-        
+    const  seat= new SeatModel({
+        audiId:req.body.audiId,
+        rows :req.body.rows,
+        coloumns :req.body.coloumns,
+        price :req.body.price,
+       
+       
     });
 
-    await user.save().then(data =>{
+    await seat.save().then(data =>{
         res.send({
-            message: "User Added Successfully",
-            user : data
+            message: "Seat Added Successfully",
+            seat : data
         });
     }).catch(err=>{
         res.status(500).send({
-            message: err.message || "User Not Added Successfully",
+            message: err.message || "Seat Not Added Successfully",
         });
     });
 }; //end of create user
 
 exports.findAll = async (req,res) =>{
     try{
-        const users = await UserModel.find();
-        res.status(200).json(users);
+        const seats = await SeatModel.find();
+        res.status(200).json(seats);
     }catch{
         res.status(404).json({message:error.message})
     }
@@ -39,8 +43,8 @@ exports.findAll = async (req,res) =>{
 //Retreive a single user with an id
 exports.findOne = async (req,res) =>{
     try{
-        const user = await UserModel.findById(req.params.id);
-        res.status(200).json(user);
+        const seat = await SeatModel.findById(req.params.id);
+        res.status(200).json(theatre);
     }catch{
         res.status(404).json({message:error.message})
     }
@@ -48,11 +52,11 @@ exports.findOne = async (req,res) =>{
 
 //delete user by id
 exports.destroy = async (req,res) =>{
-    await UserModel.findByIdAndRemove(req.params.id).then(data =>{
+    await SeatModel.findByIdAndRemove(req.params.id).then(data =>{
         if(!data){
-            res.status(404).json({message:`User not found`});
+            res.status(404).json({message:`Seat not found`});
         }else{
-            res.status(200).json({message:`User found and deleted`});
+            res.status(200).json({message:`Seat found and deleted`});
         }
     }).catch(err => {
         res.status(500).send({
@@ -70,10 +74,10 @@ exports.update = async(req,res) =>{
 
     const id = req.params.id;
 
-    await UserModel.findByIdAndUpdate(id,req.body,{ userFindAndModify : false})
+    await SeatModel.findByIdAndUpdate(id,req.body,{ userFindAndModify : false})
                                     .then(data =>{
                                         if(!data){
-                                            res.status(404).send({message:`User not found`});
+                                            res.status(404).send({message:`Seat not found`});
                                         }else{
                                             res.send({message:"Data updated successfully!!!"})
                                         }

@@ -3,7 +3,7 @@ const UserModel = require('../model/userModel');
 //create and save a new user
 
 exports.create = async (req,res) => {
-    if(!req.body.userId && !req.body.userLocation && !req.body.userBalance){
+    if(!req.body.userId && !req.body.userLocation && !req.body.userBalance && !req.body.userLanguage){
         res.status(400).send({message:"Content cannot be empty!!!"});
     }
 
